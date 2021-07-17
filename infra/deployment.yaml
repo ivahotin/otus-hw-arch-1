@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homework-deployment
+  labels:
+    app: homework
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 2
+  replicas: 5
+  selector:
+    matchLabels:
+      app: homework
+  template:
+    metadata:
+      labels:
+        app: homework
+    spec:
+      containers:
+      - name: otus-hw-arch-1
+        image: ivakhotin/otus-hw-arch-1:v1
+        ports:
+          - name: web
+            containerPort: 8000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "200m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 3
+          periodSeconds: 3
