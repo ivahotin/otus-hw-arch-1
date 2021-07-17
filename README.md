@@ -3,10 +3,10 @@
 
 # Tecтирование
 
-`curl arch.homework/health`
-`curl arch.homework/health/`
-`curl arch.homework/otusapp/igor/account/email`
-`curl arch.homework/otusapp/igor/`
+* `curl arch.homework/health`
+* `curl arch.homework/health/`
+* `curl arch.homework/otusapp/igor/account/email`
+* `curl arch.homework/otusapp/igor/`
 
 # Описание
 Сервер на Go представляет два эндпоинта
